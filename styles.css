@@ -1270,7 +1270,15 @@ em { font-style: normal; font-weight: 500; }
 .close__content a:not(.btn):hover { color: var(--red); }
 
 .close__content .btn {
+  border-color: var(--red);
+  background: var(--red);
+  color: var(--white);
+}
+
+.close__content .btn:hover {
+  background: var(--black);
   border-color: var(--black);
+  color: var(--white);
 }
 
 .close__fine {
