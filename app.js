@@ -171,6 +171,7 @@
   const goTo = (index, { smooth = true } = {}) => {
     const i = Math.max(0, Math.min(slides.length - 1, index));
     current = i;
+    slides[i].scrollTop = 0;
     const top = slides[i].offsetTop;
     window.scrollTo({ top, behavior: smooth ? "smooth" : "auto" });
     updateUI();
@@ -225,12 +226,23 @@
     dot.addEventListener("click", () => goTo(Number(dot.dataset.slide)));
   });
 
+  const atSlideEdge = (dir) => {
+    const slide = slides[current];
+    if (!slide) return true;
+    const max = slide.scrollHeight - slide.clientHeight;
+    if (max <= 2) return true;
+    if (dir > 0) return slide.scrollTop >= max - 3;
+    return slide.scrollTop <= 3;
+  };
+
   window.addEventListener("keydown", (e) => {
     if (["INPUT", "TEXTAREA"].includes(document.activeElement?.tagName)) return;
     if (e.key === "ArrowDown" || e.key === "PageDown" || e.key === " " || e.key === "ArrowRight") {
+      if (!atSlideEdge(1)) return;
       e.preventDefault();
       goTo(current + 1);
     } else if (e.key === "ArrowUp" || e.key === "PageUp" || e.key === "ArrowLeft") {
+      if (!atSlideEdge(-1)) return;
       e.preventDefault();
       goTo(current - 1);
     } else if (e.key === "Home") {
@@ -256,7 +268,8 @@
       if (touchY == null) return;
       const dy = touchY - e.changedTouches[0].screenY;
       if (Math.abs(dy) > 60) {
-        goTo(current + (dy > 0 ? 1 : -1));
+        const dir = dy > 0 ? 1 : -1;
+        if (atSlideEdge(dir)) goTo(current + dir);
       }
       touchY = null;
     },
