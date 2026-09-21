@@ -10,6 +10,7 @@
   --rule: rgba(11, 21, 32, 0.18);
   --gutter: clamp(1rem, 2.5vw, 2.5rem);
   --page: min(1220px, calc(100% - 2 * var(--gutter)));
+  --chrome-h: 5.5rem;
   --font: "Helvetica Neue", Helvetica, Arial, "Nimbus Sans L", sans-serif;
   --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
 }
@@ -140,6 +141,15 @@ em { font-style: normal; font-weight: 500; }
   gap: 0.5rem;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--black);
+  letter-spacing: 0.06em;
+}
+
+#slideLabel {
+  color: var(--red);
+  font-weight: 700;
 }
 
 .chrome__sep { color: var(--red); }
@@ -292,16 +302,16 @@ em { font-style: normal; font-weight: 500; }
 
 .dot {
   width: auto;
-  min-width: 1.4rem;
+  min-width: 1.5rem;
   height: auto;
-  padding: 0.1rem 0;
+  padding: 0.12rem 0;
   border: none;
   border-radius: 0;
   background: transparent;
-  color: var(--muted);
+  color: rgba(11, 21, 32, 0.5);
   font-family: inherit;
-  font-size: 0.65rem;
-  font-weight: 500;
+  font-size: 0.72rem;
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
   cursor: pointer;
   text-align: right;
@@ -316,6 +326,7 @@ em { font-style: normal; font-weight: 500; }
 
 .dot.is-active {
   color: var(--red);
+  font-weight: 700;
   width: auto;
   height: auto;
   border-radius: 0;
@@ -336,9 +347,10 @@ em { font-style: normal; font-weight: 500; }
   scroll-snap-stop: always;
   position: relative;
   display: flex;
-  align-items: center;
-  padding: 5.5rem var(--gutter) 3rem;
-  overflow: hidden;
+  align-items: flex-start;
+  padding: calc(var(--chrome-h) + 1.75rem) var(--gutter) 3rem;
+  overflow-x: hidden;
+  overflow-y: auto;
   background: var(--paper);
   color: var(--black);
   border-bottom: 1px solid var(--rule);
@@ -365,16 +377,21 @@ em { font-style: normal; font-weight: 500; }
   position: relative;
 }
 
-/* Slide index number — Müller-Brockmann style */
+/* Slide index — in normal flow, clear of title */
 .slide__inner::before {
   content: attr(data-index);
-  position: absolute;
-  top: -2.5rem;
-  left: 0;
-  font-size: 0.7rem;
-  font-weight: 500;
+  display: block;
+  margin: 0 0 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 700;
   letter-spacing: 0.12em;
   color: var(--red);
+  line-height: 1;
+}
+
+/* Keep index full-width when slide__inner is also a split grid */
+.slide__inner.split::before {
+  grid-column: 1 / -1;
 }
 
 .slide--hero .slide__inner::before,
@@ -404,7 +421,7 @@ em { font-style: normal; font-weight: 500; }
 
 /* ——— Hero: typography + photo grid ——— */
 .slide--hero {
-  padding: 5.5rem var(--gutter) 0;
+  padding: var(--chrome-h) var(--gutter) 0;
   align-items: stretch;
   border-bottom: 1px solid var(--rule);
 }
@@ -420,14 +437,15 @@ em { font-style: normal; font-weight: 500; }
   padding: 2rem 0 0;
   width: var(--page);
   margin: 0 auto;
-  min-height: calc(100vh - 5.5rem);
-  min-height: calc(100dvh - 5.5rem);
+  min-height: calc(100vh - var(--chrome-h));
+  min-height: calc(100dvh - var(--chrome-h));
 }
 
 @media (min-width: 900px) {
   .hero__content {
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 3rem;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2.5rem;
+    row-gap: 3rem;
     align-items: end;
     padding-bottom: 0;
   }
@@ -483,8 +501,8 @@ em { font-style: normal; font-weight: 500; }
 @media (min-width: 900px) {
   .hero__photo {
     margin: 0;
-    min-height: calc(100vh - 5.5rem);
-    min-height: calc(100dvh - 5.5rem);
+    min-height: calc(100vh - var(--chrome-h));
+    min-height: calc(100dvh - var(--chrome-h));
   }
 }
 
@@ -589,7 +607,8 @@ em { font-style: normal; font-weight: 500; }
 @media (min-width: 860px) {
   .split {
     grid-template-columns: 1fr 1fr;
-    gap: 3rem 2.5rem;
+    column-gap: 2.5rem;
+    row-gap: 3rem;
   }
 
   .split--tight {
@@ -761,6 +780,27 @@ em { font-style: normal; font-weight: 500; }
   min-height: 0;
 }
 
+.mosaic--6 {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr 1fr;
+  aspect-ratio: 3 / 4;
+}
+
+.mosaic--6 img:nth-child(7) {
+  grid-column: 1 / -1;
+}
+
+.banner-photo {
+  margin: 0 0 1.25rem;
+}
+
+.banner-photo img {
+  width: 100%;
+  max-height: 23rem;
+  object-fit: cover;
+  display: block;
+}
+
 .mosaic img {
   width: 100%;
   height: 100%;
@@ -810,6 +850,10 @@ em { font-style: normal; font-weight: 500; }
   background: transparent;
 }
 
+.trio + .trio {
+  margin-top: 0.5rem;
+}
+
 @media (min-width: 760px) {
   .trio { grid-template-columns: repeat(3, 1fr); }
 }
@@ -830,6 +874,10 @@ em { font-style: normal; font-weight: 500; }
   object-position: center;
   border-radius: 0;
   box-shadow: none;
+}
+
+.trio__pylon {
+  object-position: center 20%;
 }
 
 .trio figcaption {
@@ -923,23 +971,30 @@ em { font-style: normal; font-weight: 500; }
 .pepper-photos {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
   gap: 0.5rem;
   margin: 0 0 1rem;
   background: transparent;
   aspect-ratio: 16 / 9;
   width: 100%;
   flex-shrink: 0;
+  overflow: hidden;
+  align-items: stretch;
 }
 
-.pepper-photos img {
+.pepper-photos--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.pepper-photos > img {
   width: 100%;
   height: 100%;
   min-height: 0;
-  aspect-ratio: unset;
+  min-width: 0;
+  aspect-ratio: auto;
   object-fit: cover;
-  object-position: center top;
+  object-position: center;
   border-radius: 0;
+  display: block;
 }
 
 /* ——— Business ——— */
@@ -948,6 +1003,7 @@ em { font-style: normal; font-weight: 500; }
   gap: 0.5rem;
   margin: 1.75rem 0 1rem;
   background: transparent;
+  align-items: start;
 }
 
 @media (min-width: 800px) {
@@ -957,20 +1013,44 @@ em { font-style: normal; font-weight: 500; }
 .biz-spotlight figure {
   margin: 0;
   background: transparent;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
-.biz-spotlight img {
+/* Same media height in every business column */
+.biz-spotlight > figure > img,
+.biz-spotlight > figure > .pepper-photos {
   width: 100%;
   aspect-ratio: 4 / 3;
   height: auto;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.biz-spotlight > figure > img {
   object-fit: cover;
   object-position: center;
   border-radius: 0;
   box-shadow: none;
+  display: block;
+}
+
+.biz-spotlight > figure > .pepper-photos {
+  overflow: hidden;
+}
+
+.biz-spotlight > figure > .pepper-photos > img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  aspect-ratio: auto;
+  object-fit: cover;
+  object-position: center;
 }
 
 .biz-spotlight figcaption {
-  padding: 0.75rem;
+  padding: 0.75rem 0 0;
   text-transform: none;
   letter-spacing: 0;
   font-size: 0.8rem;
@@ -1006,7 +1086,7 @@ em { font-style: normal; font-weight: 500; }
 .benefit {
   background: transparent;
   border-radius: 0;
-  padding: 1.25rem;
+  padding: 0.85rem 1rem;
   border: none;
   border-right: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
@@ -1015,14 +1095,14 @@ em { font-style: normal; font-weight: 500; }
 
 .benefit span {
   font-family: var(--font);
-  font-size: 1.5rem;
+  font-size: 1.15rem;
   color: var(--red);
   font-weight: 500;
   letter-spacing: -0.02em;
 }
 
-.benefit h3 { margin: 0.4rem 0 0.45rem; font-size: 1.05rem; }
-.benefit p { margin: 0; font-size: 0.85rem; color: var(--muted); max-width: none; }
+.benefit h3 { margin: 0.25rem 0 0.3rem; font-size: 0.95rem; }
+.benefit p { margin: 0; font-size: 0.78rem; color: var(--muted); max-width: none; line-height: 1.35; }
 
 /* ——— Calendar & phones ——— */
 .calendar-grid {
@@ -1080,6 +1160,39 @@ em { font-style: normal; font-weight: 500; }
   border-left: 1px solid var(--rule);
 }
 
+.phones--core {
+  margin-top: 2rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 720px) {
+  .phones--core {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.phones--full {
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (min-width: 900px) {
+  .phones--full {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.phones--full a {
+  padding: 0.65rem 0.75rem;
+}
+
+.phones--full strong {
+  font-size: 0.8rem;
+}
+
+.phones--full span {
+  font-size: 0.58rem;
+}
+
 .phones a {
   text-decoration: none;
   background: transparent;
@@ -1119,7 +1232,7 @@ em { font-style: normal; font-weight: 500; }
 
 /* ——— Close ——— */
 .slide--close {
-  padding: 5.5rem var(--gutter) 3rem;
+  padding: calc(var(--chrome-h) + 1.75rem) var(--gutter) 3rem;
   color: var(--black);
   text-align: left;
   background: var(--paper);
@@ -1224,7 +1337,8 @@ em { font-style: normal; font-weight: 500; }
 .hint.is-hidden { opacity: 0; }
 
 @media (max-width: 600px) {
-  .slide { padding-top: 5rem; padding-bottom: 2.5rem; }
+  :root { --chrome-h: 4.25rem; }
+  .slide { padding-top: calc(var(--chrome-h) + 1.25rem); padding-bottom: 2.5rem; }
   .mosaic { min-height: 14rem; aspect-ratio: 1; }
   .phones { grid-template-columns: 1fr; }
   .chrome {
@@ -1271,11 +1385,11 @@ em { font-style: normal; font-weight: 500; }
   html {
     scroll-snap-type: none;
     height: auto;
-    background: var(--paper);
+    background: #fff;
   }
 
   body {
-    background: var(--paper);
+    background: #fff;
     color: var(--black);
     font-size: 10.5pt;
     line-height: 1.4;
@@ -1318,7 +1432,7 @@ em { font-style: normal; font-weight: 500; }
     break-inside: auto;
     overflow: visible;
     display: block;
-    background: var(--paper) !important;
+    background: #fff !important;
   }
 
   .slide:last-child {
@@ -1338,7 +1452,7 @@ em { font-style: normal; font-weight: 500; }
 
   .slide--tint,
   .slide--deep {
-    background: var(--paper) !important;
+    background: #fff !important;
   }
 
   .slide__inner {
@@ -1349,10 +1463,10 @@ em { font-style: normal; font-weight: 500; }
   }
 
   .slide__inner::before {
-    top: 0;
-    left: 0;
+    position: static;
     font-size: 0.65rem;
     letter-spacing: 0.12em;
+    margin-bottom: 0.4rem;
   }
 
   h1 { font-size: 28pt; }
