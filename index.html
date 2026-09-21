@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title data-i18n="meta.title">Costambar Community Bulletin · September 2026</title>
   <meta name="description" data-i18n-content="meta.description" content="Monthly Community Bulletin for the Costambar Homeowners Association (APC), Puerto Plata, Dominican Republic." />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=20260921b" />
 </head>
 <body>
   <div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
@@ -25,8 +25,13 @@
         <button type="button" class="lang__btn is-active" data-lang="en" aria-pressed="true">EN</button>
         <button type="button" class="lang__btn" data-lang="es" aria-pressed="false">ES</button>
       </div>
-      <button type="button" class="nav-btn" id="prevBtn" data-i18n-aria="meta.prev" aria-label="Previous slide">↑</button>
-      <button type="button" class="nav-btn" id="nextBtn" data-i18n-aria="meta.next" aria-label="Next slide">↓</button>
+      <button type="button" class="pdf-btn" id="pdfBtn" data-i18n="meta.pdf" data-i18n-aria="meta.pdfAria" aria-label="Download PDF">PDF</button>
+      <button type="button" class="nav-btn" id="prevBtn" data-i18n-aria="meta.prev" aria-label="Previous slide">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="5 15 12 8 19 15" /></svg>
+      </button>
+      <button type="button" class="nav-btn" id="nextBtn" data-i18n-aria="meta.next" aria-label="Next slide">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="5 9 12 16 19 9" /></svg>
+      </button>
     </div>
   </nav>
 

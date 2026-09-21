@@ -7,15 +7,16 @@
   const nextBtn = document.getElementById("nextBtn");
   const startBtn = document.getElementById("startBtn");
   const hint = document.getElementById("hint");
-  const langButtons = [...document.querySelectorAll(".lang__btn")];
+  const pdfBtn = document.getElementById("pdfBtn");
   let current = 0;
 
-  const dict = window.APC_I18N || {};
+  const dict = () => window.APC_I18N || {};
   const STORAGE_KEY = "apc-bulletin-lang";
+  let activeLang = "en";
 
   const lookup = (lang, path) => {
     const parts = path.split(".");
-    let node = dict[lang];
+    let node = dict()[lang];
     for (const part of parts) {
       if (node == null) return null;
       node = node[part];
@@ -24,8 +25,10 @@
   };
 
   const applyLanguage = (lang) => {
-    const pack = dict[lang] || dict.en;
+    const packs = dict();
+    const pack = packs[lang] || packs.en;
     if (!pack) return;
+    activeLang = lang;
     document.documentElement.lang = lang;
 
     document.querySelectorAll("[data-i18n]").forEach((el) => {
@@ -62,8 +65,8 @@
     const titleEl = document.querySelector("title[data-i18n]");
     if (titleEl && pack.meta?.title) titleEl.textContent = pack.meta.title;
 
-    langButtons.forEach((btn) => {
-      const active = btn.dataset.lang === lang;
+    document.querySelectorAll(".lang__btn").forEach((btn) => {
+      const active = btn.getAttribute("data-lang") === lang;
       btn.classList.toggle("is-active", active);
       btn.setAttribute("aria-pressed", active ? "true" : "false");
     });
@@ -76,9 +79,10 @@
   };
 
   const preferredLang = () => {
+    const packs = dict();
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved && dict[saved]) return saved;
+      if (saved && packs[saved]) return saved;
     } catch {
       /* ignore */
     }
@@ -89,12 +93,36 @@
 
   applyLanguage(preferredLang());
 
-  langButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const lang = btn.dataset.lang;
-      if (lang && dict[lang]) applyLanguage(lang);
-    });
+  document.querySelector(".chrome__nav")?.addEventListener("click", (e) => {
+    const btn = e.target.closest(".lang__btn");
+    if (!btn) return;
+    const lang = btn.getAttribute("data-lang");
+    if (lang && dict()[lang]) applyLanguage(lang);
   });
+
+  const downloadPdf = () => {
+    if (!pdfBtn || pdfBtn.disabled) return;
+    const pack = dict()[activeLang] || dict().en || {};
+    const filename = pack.meta?.pdfFilename || "Costambar-Bulletin";
+    const previousTitle = document.title;
+    slides.forEach((slide) => slide.classList.add("is-visible"));
+    document.title = filename;
+    pdfBtn.disabled = true;
+
+    let restored = false;
+    const restore = () => {
+      if (restored) return;
+      restored = true;
+      document.title = previousTitle;
+      pdfBtn.disabled = false;
+      window.removeEventListener("afterprint", restore);
+    };
+    window.addEventListener("afterprint", restore);
+    window.print();
+    setTimeout(restore, 1500);
+  };
+
+  pdfBtn?.addEventListener("click", downloadPdf);
 
   const goTo = (index, { smooth = true } = {}) => {
     const i = Math.max(0, Math.min(slides.length - 1, index));
