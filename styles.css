@@ -147,7 +147,43 @@ em { font-style: normal; font-weight: 500; }
 .chrome__nav {
   justify-self: end;
   display: flex;
+  align-items: center;
   gap: 0;
+}
+
+.lang {
+  display: flex;
+  margin-right: 0.65rem;
+  border: 2px solid var(--black);
+}
+
+.lang__btn {
+  min-width: 2.35rem;
+  height: 2.5rem;
+  padding: 0 0.55rem;
+  border: none;
+  background: transparent;
+  color: var(--black);
+  font-family: inherit;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.lang__btn + .lang__btn {
+  border-left: 2px solid var(--black);
+}
+
+.lang__btn.is-active,
+.lang__btn[aria-pressed="true"] {
+  background: var(--black);
+  color: var(--paper);
+}
+
+.lang__btn:hover:not(.is-active):not([aria-pressed="true"]) {
+  background: rgba(11, 21, 32, 0.06);
 }
 
 .nav-btn {
@@ -1136,6 +1172,14 @@ em { font-style: normal; font-weight: 500; }
   .chrome__seal { display: none; }
   .chrome__wordmark { height: 29px; }
   .chrome__meta { font-size: 0.65rem; }
+  .lang { margin-right: 0.4rem; }
+  .lang__btn {
+    min-width: 2rem;
+    height: 2.25rem;
+    padding: 0 0.4rem;
+    font-size: 0.65rem;
+  }
+  .nav-btn { width: 2.25rem; height: 2.25rem; }
   .hero__wordmark { width: min(100%, 24rem); margin-bottom: 1.25rem; }
 }
 

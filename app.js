@@ -7,8 +7,94 @@
   const nextBtn = document.getElementById("nextBtn");
   const startBtn = document.getElementById("startBtn");
   const hint = document.getElementById("hint");
+  const langButtons = [...document.querySelectorAll(".lang__btn")];
   let current = 0;
-  let scrolling = false;
+
+  const dict = window.APC_I18N || {};
+  const STORAGE_KEY = "apc-bulletin-lang";
+
+  const lookup = (lang, path) => {
+    const parts = path.split(".");
+    let node = dict[lang];
+    for (const part of parts) {
+      if (node == null) return null;
+      node = node[part];
+    }
+    return node;
+  };
+
+  const applyLanguage = (lang) => {
+    const pack = dict[lang] || dict.en;
+    if (!pack) return;
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const value = lookup(lang, el.dataset.i18n);
+      if (typeof value === "string") el.textContent = value;
+    });
+
+    document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+      const value = lookup(lang, el.dataset.i18nHtml);
+      if (typeof value === "string") el.innerHTML = value;
+    });
+
+    document.querySelectorAll("[data-i18n-content]").forEach((el) => {
+      const value = lookup(lang, el.dataset.i18nContent);
+      if (typeof value === "string") el.setAttribute("content", value);
+    });
+
+    document.querySelectorAll("[data-i18n-alt]").forEach((el) => {
+      const value = lookup(lang, el.dataset.i18nAlt);
+      if (typeof value === "string") el.setAttribute("alt", value);
+    });
+
+    document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+      const value = lookup(lang, el.dataset.i18nAria);
+      if (typeof value === "string") el.setAttribute("aria-label", value);
+    });
+
+    document.querySelectorAll("[data-i18n-aria-dot]").forEach((el) => {
+      const idx = Number(el.dataset.i18nAriaDot);
+      const label = pack.dots?.[idx];
+      if (typeof label === "string") el.setAttribute("aria-label", label);
+    });
+
+    const titleEl = document.querySelector("title[data-i18n]");
+    if (titleEl && pack.meta?.title) titleEl.textContent = pack.meta.title;
+
+    langButtons.forEach((btn) => {
+      const active = btn.dataset.lang === lang;
+      btn.classList.toggle("is-active", active);
+      btn.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+
+    try {
+      localStorage.setItem(STORAGE_KEY, lang);
+    } catch {
+      /* ignore */
+    }
+  };
+
+  const preferredLang = () => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved && dict[saved]) return saved;
+    } catch {
+      /* ignore */
+    }
+    const nav = (navigator.language || "").toLowerCase();
+    if (nav.startsWith("es")) return "es";
+    return "en";
+  };
+
+  applyLanguage(preferredLang());
+
+  langButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const lang = btn.dataset.lang;
+      if (lang && dict[lang]) applyLanguage(lang);
+    });
+  });
 
   const goTo = (index, { smooth = true } = {}) => {
     const i = Math.max(0, Math.min(slides.length - 1, index));
@@ -84,7 +170,6 @@
     }
   });
 
-  // Touch swipe (vertical)
   let touchY = null;
   window.addEventListener(
     "touchstart",
@@ -106,7 +191,6 @@
     { passive: true }
   );
 
-  // Hide hint after first interaction
   const hideHint = () => {
     hint?.classList.add("is-hidden");
     window.removeEventListener("wheel", hideHint);
@@ -118,7 +202,6 @@
   window.addEventListener("touchstart", hideHint, { once: true, passive: true });
   setTimeout(() => hint?.classList.add("is-hidden"), 6000);
 
-  // Prevent scroll chaining chaos when using buttons rapidly
   let wheelLock = false;
   window.addEventListener(
     "wheel",
@@ -128,12 +211,10 @@
         return;
       }
       if (Math.abs(e.deltaY) < 40) return;
-      // Let native scroll-snap handle most cases; only nudge on large intentional scrolls
     },
     { passive: false }
   );
 
-  // Hash deep-links
   if (location.hash) {
     const el = document.querySelector(location.hash);
     const idx = slides.indexOf(el);
