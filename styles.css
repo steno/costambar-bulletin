@@ -23,7 +23,6 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
   height: 100%;
 }
 
@@ -341,24 +340,16 @@ em { font-style: normal; font-weight: 500; }
 
 .slide {
   --slide-accent: var(--red);
-  height: 100vh;
-  height: 100dvh;
   min-height: 100vh;
   min-height: 100dvh;
-  max-height: 100vh;
-  max-height: 100dvh;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
   position: relative;
   display: flex;
   align-items: flex-start;
   padding: calc(var(--chrome-h) + 1.75rem) var(--gutter) 3rem;
   overflow-x: hidden;
-  overflow-y: auto;
   background: var(--paper);
   color: var(--black);
   border-bottom: 1px solid var(--rule);
-  -webkit-overflow-scrolling: touch;
 }
 
 .slide--tint,

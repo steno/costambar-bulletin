@@ -171,7 +171,6 @@
   const goTo = (index, { smooth = true } = {}) => {
     const i = Math.max(0, Math.min(slides.length - 1, index));
     current = i;
-    slides[i].scrollTop = 0;
     const top = slides[i].offsetTop;
     window.scrollTo({ top, behavior: smooth ? "smooth" : "auto" });
     updateUI();
@@ -230,29 +229,12 @@
     dot.addEventListener("click", () => goTo(Number(dot.dataset.slide)));
   });
 
-  const atSlideEdge = (dir) => {
-    const slide = slides[current];
-    if (!slide) return true;
-    const max = slide.scrollHeight - slide.clientHeight;
-    if (max <= 2) return true;
-    if (dir > 0) return slide.scrollTop >= max - 3;
-    return slide.scrollTop <= 3;
-  };
-
-  const advance = (dir) => {
-    if (!atSlideEdge(dir)) return false;
-    goTo(current + dir);
-    return true;
-  };
-
   window.addEventListener("keydown", (e) => {
     if (["INPUT", "TEXTAREA"].includes(document.activeElement?.tagName)) return;
     if (e.key === "ArrowDown" || e.key === "PageDown" || e.key === " " || e.key === "ArrowRight") {
-      if (!atSlideEdge(1)) return;
       e.preventDefault();
       goTo(current + 1);
     } else if (e.key === "ArrowUp" || e.key === "PageUp" || e.key === "ArrowLeft") {
-      if (!atSlideEdge(-1)) return;
       e.preventDefault();
       goTo(current - 1);
     } else if (e.key === "Home") {
@@ -264,25 +246,6 @@
     }
   });
 
-  let touchY = null;
-  window.addEventListener(
-    "touchstart",
-    (e) => {
-      touchY = e.changedTouches[0].screenY;
-    },
-    { passive: true }
-  );
-  window.addEventListener(
-    "touchend",
-    (e) => {
-      if (touchY == null) return;
-      const dy = touchY - e.changedTouches[0].screenY;
-      if (Math.abs(dy) > 60) advance(dy > 0 ? 1 : -1);
-      touchY = null;
-    },
-    { passive: true }
-  );
-
   const hideHint = () => {
     hint?.classList.add("is-hidden");
     window.removeEventListener("wheel", hideHint);
@@ -293,36 +256,6 @@
   window.addEventListener("keydown", hideHint, { once: true });
   window.addEventListener("touchstart", hideHint, { once: true, passive: true });
   setTimeout(() => hint?.classList.add("is-hidden"), 6000);
-
-  let wheelLock = false;
-  window.addEventListener(
-    "wheel",
-    (e) => {
-      if (Math.abs(e.deltaY) < 12) return;
-      const slide = slides[current];
-      if (!slide) return;
-      const dir = e.deltaY > 0 ? 1 : -1;
-      const max = slide.scrollHeight - slide.clientHeight;
-
-      if (max > 2) {
-        const atEnd = dir > 0 ? slide.scrollTop >= max - 3 : slide.scrollTop <= 3;
-        if (!atEnd) {
-          e.preventDefault();
-          slide.scrollTop += e.deltaY;
-          return;
-        }
-      }
-
-      e.preventDefault();
-      if (wheelLock) return;
-      wheelLock = true;
-      goTo(current + dir);
-      setTimeout(() => {
-        wheelLock = false;
-      }, 550);
-    },
-    { passive: false }
-  );
 
   if (location.hash) {
     const el = document.querySelector(location.hash);
