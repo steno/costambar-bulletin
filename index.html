@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Costambar Community Bulletin · September 2026</title>
   <meta name="description" content="Monthly Community Bulletin for the Costambar Homeowners Association (APC), Puerto Plata, Dominican Republic." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -15,13 +12,13 @@
 
   <nav class="chrome" aria-label="Presentation controls">
     <a class="chrome__brand" href="#slide-0">
-      <img src="images/logo.jpg" alt="APC Costambar logo" width="40" height="40" />
-      <span>APC Bulletin</span>
+      <img src="images/costambarsignet.png" alt="" width="56" height="56" class="chrome__seal" />
+      <img src="images/costambar-wordmark.png" alt="Costambar" width="200" height="52" class="chrome__wordmark" />
     </a>
     <div class="chrome__meta">
-      <span id="slideLabel">1 / 14</span>
-      <span class="chrome__sep">·</span>
-      <span>September 2026</span>
+      <span id="slideLabel">01 / 14</span>
+      <span class="chrome__sep">/</span>
+      <span>Sep 2026</span>
     </div>
     <div class="chrome__nav">
       <button type="button" class="nav-btn" id="prevBtn" aria-label="Previous slide">↑</button>
@@ -30,43 +27,43 @@
   </nav>
 
   <aside class="dots" aria-label="Slide navigation">
-    <button type="button" class="dot" data-slide="0" aria-label="Title"></button>
-    <button type="button" class="dot" data-slide="1" aria-label="From the President"></button>
-    <button type="button" class="dot" data-slide="2" aria-label="New Members"></button>
-    <button type="button" class="dot" data-slide="3" aria-label="Perimeter Wall"></button>
-    <button type="button" class="dot" data-slide="4" aria-label="Beautification"></button>
-    <button type="button" class="dot" data-slide="5" aria-label="Around Costambar"></button>
-    <button type="button" class="dot" data-slide="6" aria-label="Reef & Turtles"></button>
-    <button type="button" class="dot" data-slide="7" aria-label="Community Pulse"></button>
-    <button type="button" class="dot" data-slide="8" aria-label="Business Network"></button>
-    <button type="button" class="dot" data-slide="9" aria-label="Membership"></button>
-    <button type="button" class="dot" data-slide="10" aria-label="Beach Safety"></button>
-    <button type="button" class="dot" data-slide="11" aria-label="Security Update"></button>
-    <button type="button" class="dot" data-slide="12" aria-label="Events & Contacts"></button>
-    <button type="button" class="dot" data-slide="13" aria-label="Closing"></button>
+    <button type="button" class="dot" data-slide="0" data-num="01" aria-label="Title"></button>
+    <button type="button" class="dot" data-slide="1" data-num="02" aria-label="From the President"></button>
+    <button type="button" class="dot" data-slide="2" data-num="03" aria-label="New Members"></button>
+    <button type="button" class="dot" data-slide="3" data-num="04" aria-label="Perimeter Wall"></button>
+    <button type="button" class="dot" data-slide="4" data-num="05" aria-label="Beautification"></button>
+    <button type="button" class="dot" data-slide="5" data-num="06" aria-label="Around Costambar"></button>
+    <button type="button" class="dot" data-slide="6" data-num="07" aria-label="Reef & Turtles"></button>
+    <button type="button" class="dot" data-slide="7" data-num="08" aria-label="Community Pulse"></button>
+    <button type="button" class="dot" data-slide="8" data-num="09" aria-label="Business Network"></button>
+    <button type="button" class="dot" data-slide="9" data-num="10" aria-label="Membership"></button>
+    <button type="button" class="dot" data-slide="10" data-num="11" aria-label="Beach Safety"></button>
+    <button type="button" class="dot" data-slide="11" data-num="12" aria-label="Security Update"></button>
+    <button type="button" class="dot" data-slide="12" data-num="13" aria-label="Events & Contacts"></button>
+    <button type="button" class="dot" data-slide="13" data-num="14" aria-label="Closing"></button>
   </aside>
 
   <main class="deck" id="deck">
     <!-- 0: Hero -->
     <section class="slide slide--hero" id="slide-0" data-title="Welcome">
-      <div class="hero__media" aria-hidden="true">
-        <img src="images/beach-hero.jpg" alt="" class="hero__img" />
-        <div class="hero__wash"></div>
-        <div class="hero__wave"></div>
-      </div>
-      <div class="slide__inner hero__content">
-        <img src="images/logo.jpg" alt="Asociación de Propietarios de Costambar" class="hero__logo reveal" />
-        <p class="eyebrow reveal">Costambar Homeowners Association</p>
-        <h1 class="reveal">Monthly Community Bulletin</h1>
-        <p class="hero__sub reveal">September 2026 · The pearl of Puerto Plata</p>
-        <p class="hero__lede reveal">Keeping our beach community informed — security, beautification, local businesses, and the people who make Costambar home.</p>
-        <button type="button" class="btn reveal" id="startBtn">Begin presentation <span aria-hidden="true">↓</span></button>
+      <div class="hero__content">
+        <div class="hero__copy">
+          <img src="images/costambar-wordmark.png" alt="Costambar" class="hero__wordmark" width="682" height="176" />
+          <p class="eyebrow reveal"><span class="plus" aria-hidden="true"></span> Costambar Homeowners Association</p>
+          <h1 class="reveal">Monthly Community Bulletin</h1>
+          <p class="hero__sub reveal">September 2026 — The pearl of Puerto Plata</p>
+          <p class="hero__lede reveal">Keeping our beach community informed — security, beautification, local businesses, and the people who make Costambar home.</p>
+          <button type="button" class="btn reveal" id="startBtn">Begin <span aria-hidden="true">↓</span></button>
+        </div>
+        <div class="hero__photo reveal" aria-hidden="true">
+          <img src="images/beach-hero.jpg" alt="" width="864" height="1152" decoding="async" fetchpriority="high" />
+        </div>
       </div>
     </section>
 
     <!-- 1: President -->
     <section class="slide" id="slide-1" data-title="From the President">
-      <div class="slide__inner split">
+      <div class="slide__inner split" data-index="02">
         <div class="split__text">
           <p class="eyebrow reveal">From the APC President</p>
           <h2 class="reveal">Another month in paradise — heat, humidity, and home.</h2>
@@ -76,7 +73,7 @@
         </div>
         <div class="split__media reveal">
           <figure class="photo-stack">
-            <img src="images/cristo.jpg" alt="Cristo Redentor overlooking Costambar" />
+            <img src="images/cristo.jpg" alt="Cristo Redentor overlooking Costambar" width="864" height="1152" decoding="async" />
             <figcaption>Cristo Redentor · local landmark</figcaption>
           </figure>
         </div>
@@ -85,7 +82,7 @@
 
     <!-- 2: New Members -->
     <section class="slide slide--tint" id="slide-2" data-title="New Members">
-      <div class="slide__inner">
+      <div class="slide__inner" data-index="03">
         <p class="eyebrow reveal">Welcome</p>
         <h2 class="reveal">Please welcome our newest APC members</h2>
         <p class="lede reveal">When you see them around Costambar, extend a hearty APC welcome — membership keeps fees lower for everyone.</p>
@@ -102,7 +99,7 @@
 
     <!-- 3: Perimeter Wall -->
     <section class="slide" id="slide-3" data-title="Perimeter Wall">
-      <div class="slide__inner">
+      <div class="slide__inner" data-index="04">
         <p class="eyebrow reveal">APC Secretary’s Corner</p>
         <h2 class="reveal">Our perimeter wall needs the community again</h2>
         <div class="feature-row">
@@ -130,7 +127,7 @@
 
     <!-- 4: Beautification -->
     <section class="slide slide--tint" id="slide-4" data-title="Beautification">
-      <div class="slide__inner">
+      <div class="slide__inner" data-index="05">
         <p class="eyebrow reveal">Beautification Committee</p>
         <h2 class="reveal">Volunteers keep Costambar beautiful</h2>
         <p class="lede reveal">Nearly <strong>40 bags of trash</strong> collected this month. Local government provides zero street-cleaning help — our volunteers do it all.</p>
@@ -161,7 +158,7 @@
 
     <!-- 5: In and Around -->
     <section class="slide" id="slide-5" data-title="Around Costambar">
-      <div class="slide__inner">
+      <div class="slide__inner" data-index="06">
         <p class="eyebrow reveal">In &amp; Around the Community</p>
         <h2 class="reveal">Sustainable beaches workshop</h2>
         <div class="split">
@@ -182,7 +179,7 @@
 
     <!-- 6: Reef & Turtles -->
     <section class="slide slide--deep" id="slide-6" data-title="Reef & Turtles">
-      <div class="slide__inner">
+      <div class="slide__inner" data-index="07">
         <p class="eyebrow reveal">Conservation</p>
         <h2 class="reveal">Reef nurseries thriving — and turtle hatchlings on our beach</h2>
         <div class="feature-row">
@@ -203,7 +200,7 @@
 
     <!-- 7: Broadcast + Pepper -->
     <section class="slide slide--tint" id="slide-7" data-title="Community Pulse">
-      <div class="slide__inner">
+      <div class="slide__inner" data-index="08">
         <div class="two-up">
           <article class="card-block reveal">
             <p class="eyebrow">On air</p>
@@ -228,7 +225,7 @@
 
     <!-- 8: Business Network -->
     <section class="slide" id="slide-8" data-title="Business Network">
-      <div class="slide__inner">
+      <div class="slide__inner" data-index="09">
         <p class="eyebrow reveal">Costambar Business Network</p>
         <h2 class="reveal">Support the businesses that support Costambar</h2>
         <p class="lede reveal">All APC business members are CBN members — listed on <a href="https://www.costambar.org/" target="_blank" rel="noopener">costambar.org</a> and in new-member packets.</p>
@@ -261,7 +258,7 @@
 
     <!-- 9: Membership -->
     <section class="slide slide--tint" id="slide-9" data-title="Membership">
-      <div class="slide__inner">
+      <div class="slide__inner" data-index="10">
         <p class="eyebrow reveal">APC Membership</p>
         <h2 class="reveal">What your membership dollars deliver</h2>
         <div class="benefits reveal">
@@ -281,10 +278,10 @@
 
     <!-- 10: Beach Safety -->
     <section class="slide" id="slide-10" data-title="Beach Safety">
-      <div class="slide__inner split">
+      <div class="slide__inner split" data-index="11">
         <div class="split__media reveal">
           <figure class="photo-stack">
-            <img src="images/beach-safety.jpg" alt="Costambar beach shoreline" />
+            <img src="images/beach-safety.jpg" alt="Costambar beach shoreline and reef channels" width="900" height="1200" decoding="async" />
             <figcaption>Respect the reef channels and tides</figcaption>
           </figure>
         </div>
@@ -304,7 +301,7 @@
 
     <!-- 11: Security Update -->
     <section class="slide slide--tint" id="slide-11" data-title="Security Update">
-      <div class="slide__inner">
+      <div class="slide__inner" data-index="12">
         <p class="eyebrow reveal">Security Update</p>
         <h2 class="reveal">Industrial Gate &amp; increased law enforcement</h2>
         <div class="two-up">
@@ -328,7 +325,7 @@
 
     <!-- 12: Events & Phones -->
     <section class="slide" id="slide-12" data-title="Events & Contacts">
-      <div class="slide__inner">
+      <div class="slide__inner" data-index="13">
         <div class="calendar-grid">
           <div class="reveal">
             <p class="eyebrow">Community calendar</p>
@@ -362,12 +359,9 @@
 
     <!-- 13: Close -->
     <section class="slide slide--close" id="slide-13" data-title="The APC Needs You">
-      <div class="close__media" aria-hidden="true">
-        <img src="images/flags.jpg" alt="" />
-        <div class="hero__wash"></div>
-      </div>
-      <div class="slide__inner close__content">
-        <img src="images/logo.jpg" alt="" class="hero__logo reveal" />
+      <div class="slide__inner close__content" data-index="14">
+        <img src="images/costambar-wordmark.png" alt="Costambar" class="hero__wordmark" width="682" height="176" />
+        <p class="eyebrow reveal">14 — Closing</p>
         <h2 class="reveal">The APC Needs YOU!</h2>
         <p class="reveal">Questions, story ideas, or bulletin input: <a href="mailto:apcpresident2026@gmail.com">apcpresident2026@gmail.com</a></p>
         <p class="reveal">APC Office · Calle Central No. 5 · Mon–Fri 9:00–3:00 · Sat 9:00–1:00<br />

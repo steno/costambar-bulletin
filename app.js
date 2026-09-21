@@ -22,7 +22,7 @@
   const updateUI = () => {
     const total = slides.length;
     progressBar.style.width = `${((current + 1) / total) * 100}%`;
-    slideLabel.textContent = `${current + 1} / ${total}`;
+    slideLabel.textContent = `${String(current + 1).padStart(2, "0")} / ${String(total).padStart(2, "0")}`;
     prevBtn.disabled = current === 0;
     nextBtn.disabled = current === total - 1;
     dots.forEach((dot, i) => {
