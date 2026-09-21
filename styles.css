@@ -1362,6 +1362,19 @@ em { font-style: normal; font-weight: 500; }
   }
   .chrome__sep { display: none; }
   .chrome__nav { --ctrl-h: 2.25rem; }
+  .member-grid {
+    margin: 0.85rem 0;
+    grid-template-columns: 1fr;
+  }
+  .member-grid li {
+    padding: 0.55rem 0.75rem;
+    gap: 0.15rem;
+  }
+  .member-grid__label { font-size: 0.58rem; }
+  .member-grid strong { font-size: 0.92rem; }
+  .member-grid em { font-size: 0.78rem; }
+  #slide-2 .lede { margin-bottom: 0.65rem; font-size: 0.92rem; }
+  #slide-2 .note { padding: 0.65rem 0.85rem; font-size: 0.82rem; }
   .lang { margin-right: 0.4rem; height: var(--ctrl-h); }
   .lang__btn {
     min-width: 2rem;
