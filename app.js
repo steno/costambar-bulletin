@@ -171,6 +171,7 @@
   const goTo = (index, { smooth = true } = {}) => {
     const i = Math.max(0, Math.min(slides.length - 1, index));
     current = i;
+    slides[i].classList.add("is-visible");
     const top = slides[i].offsetTop;
     window.scrollTo({ top, behavior: smooth ? "smooth" : "auto" });
     updateUI();
@@ -202,7 +203,7 @@
           best = entry;
         }
       });
-      if (best && best.intersectionRatio >= 0.45) {
+      if (best && best.intersectionRatio >= 0.25) {
         const idx = slides.indexOf(best.target);
         if (idx !== -1) {
           current = idx;
@@ -211,7 +212,7 @@
         }
       }
     },
-    { threshold: [0.45, 0.6, 0.75] }
+    { threshold: [0, 0.25, 0.5, 0.75, 1] }
   );
 
   slides.forEach((s) => observer.observe(s));
