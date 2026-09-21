@@ -25,9 +25,25 @@ jobs:
       - name: Cache-bust static assets
         run: |
           V="${GITHUB_SHA:0:7}"
-          # Stamp CSS/JS query params so browsers always fetch the commit's assets
-          sed -i -E "s/(styles\\.css|i18n\\.js|app\\.js)\\?v=[^\"]+/\\1?v=${V}/g" index.html
-          grep -E 'styles\\.css|i18n\\.js|app\\.js' index.html
+          python3 - <<'PY'
+          import os, re
+          v = os.environ["GITHUB_SHA"][:7]
+          path = "index.html"
+          text = open(path, encoding="utf-8").read()
+          updated, n = re.subn(
+              r"(styles\.css|i18n\.js|app\.js)\?v=[^\"]+",
+              rf"\1?v={v}",
+              text,
+          )
+          if n < 3:
+              raise SystemExit(f"expected to rewrite 3 asset URLs, got {n}")
+          open(path, "w", encoding="utf-8").write(updated)
+          for line in updated.splitlines():
+              if any(x in line for x in ("styles.css", "i18n.js", "app.js")):
+                  print(line.strip())
+          PY
+        env:
+          GITHUB_SHA: ${{ github.sha }}
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
