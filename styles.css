@@ -1344,8 +1344,12 @@ em { font-style: normal; font-weight: 500; }
   .chrome {
     grid-template-columns: auto 1fr auto;
   }
-  .chrome__seal { display: none; }
-  .chrome__wordmark { height: 29px; }
+  .chrome__seal {
+    display: block;
+    width: 40px;
+    height: 40px;
+  }
+  .chrome__wordmark { display: none; }
   .chrome__meta { font-size: 0.65rem; }
   .chrome__nav { --ctrl-h: 2.25rem; }
   .lang { margin-right: 0.4rem; height: var(--ctrl-h); }
