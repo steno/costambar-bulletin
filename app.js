@@ -13,6 +13,7 @@
   const dict = () => window.APC_I18N || {};
   const STORAGE_KEY = "apc-bulletin-lang";
   let activeLang = "en";
+  let lastLangEventAt = 0;
 
   const lookup = (lang, path) => {
     const parts = path.split(".");
@@ -27,7 +28,7 @@
   const applyLanguage = (lang) => {
     const packs = dict();
     const pack = packs[lang] || packs.en;
-    if (!pack) return;
+    if (!pack) return false;
     activeLang = lang;
     document.documentElement.lang = lang;
 
@@ -76,6 +77,7 @@
     } catch {
       /* ignore */
     }
+    return true;
   };
 
   const preferredLang = () => {
@@ -91,14 +93,56 @@
     return "en";
   };
 
-  applyLanguage(preferredLang());
+  const waitForI18n = (attempts = 40) =>
+    new Promise((resolve) => {
+      const tick = (left) => {
+        if (dict().en && dict().es) {
+          resolve(true);
+          return;
+        }
+        if (left <= 0) {
+          resolve(false);
+          return;
+        }
+        setTimeout(() => tick(left - 1), 25);
+      };
+      tick(attempts);
+    });
 
-  document.querySelector(".chrome__nav")?.addEventListener("click", (e) => {
-    const btn = e.target.closest(".lang__btn");
+  const setLanguage = (lang) => {
+    if (!lang) return;
+    const now = Date.now();
+    // Debounce duplicate click/pointerup pairs from the same gesture
+    if (now - lastLangEventAt < 250 && lang === activeLang) return;
+    lastLangEventAt = now;
+
+    if (dict()[lang]) {
+      applyLanguage(lang);
+      return;
+    }
+    waitForI18n().then((ok) => {
+      if (ok && dict()[lang]) applyLanguage(lang);
+    });
+  };
+
+  const onLangControl = (e) => {
+    const btn = e.target.closest?.(".lang__btn");
     if (!btn) return;
     const lang = btn.getAttribute("data-lang");
-    if (lang && dict()[lang]) applyLanguage(lang);
+    if (!lang) return;
+    e.preventDefault();
+    e.stopPropagation();
+    setLanguage(lang);
+  };
+
+  // Capture phase on document catches the event even if a child stops bubbling
+  document.addEventListener("click", onLangControl, true);
+  document.querySelectorAll(".lang__btn").forEach((btn) => {
+    btn.addEventListener("click", onLangControl);
   });
+
+  waitForI18n().then(() => applyLanguage(preferredLang()));
+  if (dict().en) applyLanguage(preferredLang());
 
   const downloadPdf = () => {
     if (!pdfBtn || pdfBtn.disabled) return;

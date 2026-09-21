@@ -22,6 +22,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Cache-bust static assets
+        run: |
+          V="${GITHUB_SHA:0:7}"
+          # Stamp CSS/JS query params so browsers always fetch the commit's assets
+          sed -i -E "s/(styles\\.css|i18n\\.js|app\\.js)\\?v=[^\"]+/\\1?v=${V}/g" index.html
+          grep -E 'styles\\.css|i18n\\.js|app\\.js' index.html
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

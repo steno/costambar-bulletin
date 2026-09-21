@@ -150,6 +150,9 @@ em { font-style: normal; font-weight: 500; }
   display: flex;
   align-items: center;
   gap: 0;
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
 }
 
 .lang {
@@ -158,6 +161,9 @@ em { font-style: normal; font-weight: 500; }
   box-sizing: border-box;
   margin-right: 0.65rem;
   border: 2px solid var(--black);
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
 }
 
 .lang__btn {
@@ -173,6 +179,11 @@ em { font-style: normal; font-weight: 500; }
   letter-spacing: 0.06em;
   cursor: pointer;
   line-height: 1;
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .lang__btn + .lang__btn {
