@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Costambar Community Bulletin · September 2026</title>
+  <meta name="description" content="Monthly Community Bulletin for the Costambar Homeowners Association (APC), Puerto Plata, Dominican Republic." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
+
+  <nav class="chrome" aria-label="Presentation controls">
+    <a class="chrome__brand" href="#slide-0">
+      <img src="images/logo.jpg" alt="APC Costambar logo" width="40" height="40" />
+      <span>APC Bulletin</span>
+    </a>
+    <div class="chrome__meta">
+      <span id="slideLabel">1 / 14</span>
+      <span class="chrome__sep">·</span>
+      <span>September 2026</span>
+    </div>
+    <div class="chrome__nav">
+      <button type="button" class="nav-btn" id="prevBtn" aria-label="Previous slide">↑</button>
+      <button type="button" class="nav-btn" id="nextBtn" aria-label="Next slide">↓</button>
+    </div>
+  </nav>
+
+  <aside class="dots" aria-label="Slide navigation">
+    <button type="button" class="dot" data-slide="0" aria-label="Title"></button>
+    <button type="button" class="dot" data-slide="1" aria-label="From the President"></button>
+    <button type="button" class="dot" data-slide="2" aria-label="New Members"></button>
+    <button type="button" class="dot" data-slide="3" aria-label="Perimeter Wall"></button>
+    <button type="button" class="dot" data-slide="4" aria-label="Beautification"></button>
+    <button type="button" class="dot" data-slide="5" aria-label="Around Costambar"></button>
+    <button type="button" class="dot" data-slide="6" aria-label="Reef & Turtles"></button>
+    <button type="button" class="dot" data-slide="7" aria-label="Community Pulse"></button>
+    <button type="button" class="dot" data-slide="8" aria-label="Business Network"></button>
+    <button type="button" class="dot" data-slide="9" aria-label="Membership"></button>
+    <button type="button" class="dot" data-slide="10" aria-label="Beach Safety"></button>
+    <button type="button" class="dot" data-slide="11" aria-label="Security Update"></button>
+    <button type="button" class="dot" data-slide="12" aria-label="Events & Contacts"></button>
+    <button type="button" class="dot" data-slide="13" aria-label="Closing"></button>
+  </aside>
+
+  <main class="deck" id="deck">
+    <!-- 0: Hero -->
+    <section class="slide slide--hero" id="slide-0" data-title="Welcome">
+      <div class="hero__media" aria-hidden="true">
+        <img src="images/beach-hero.jpg" alt="" class="hero__img" />
+        <div class="hero__wash"></div>
+        <div class="hero__wave"></div>
+      </div>
+      <div class="slide__inner hero__content">
+        <img src="images/logo.jpg" alt="Asociación de Propietarios de Costambar" class="hero__logo reveal" />
+        <p class="eyebrow reveal">Costambar Homeowners Association</p>
+        <h1 class="reveal">Monthly Community Bulletin</h1>
+        <p class="hero__sub reveal">September 2026 · The pearl of Puerto Plata</p>
+        <p class="hero__lede reveal">Keeping our beach community informed — security, beautification, local businesses, and the people who make Costambar home.</p>
+        <button type="button" class="btn reveal" id="startBtn">Begin presentation <span aria-hidden="true">↓</span></button>
+      </div>
+    </section>
+
+    <!-- 1: President -->
+    <section class="slide" id="slide-1" data-title="From the President">
+      <div class="slide__inner split">
+        <div class="split__text">
+          <p class="eyebrow reveal">From the APC President</p>
+          <h2 class="reveal">Another month in paradise — heat, humidity, and home.</h2>
+          <p class="reveal">Even in the summer heat and Sahara dust, Costambar remains special: mornings on the porch with Cristo Redentor in the clouds, evenings by the cool breeze and sound of the waves.</p>
+          <p class="reveal"><strong>Member perk:</strong> El Carey Restaurant and Dr. Gary’s Life Quiro Wellness Center now offer <em>10% off</em> to APC members. More businesses are joining — see the Costambar Business Network.</p>
+          <blockquote class="pullquote reveal">Costambar is definitely the “pearl” of Puerto Plata.</blockquote>
+        </div>
+        <div class="split__media reveal">
+          <figure class="photo-stack">
+            <img src="images/cristo.jpg" alt="Cristo Redentor overlooking Costambar" />
+            <figcaption>Cristo Redentor · local landmark</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2: New Members -->
+    <section class="slide slide--tint" id="slide-2" data-title="New Members">
+      <div class="slide__inner">
+        <p class="eyebrow reveal">Welcome</p>
+        <h2 class="reveal">Please welcome our newest APC members</h2>
+        <p class="lede reveal">When you see them around Costambar, extend a hearty APC welcome — membership keeps fees lower for everyone.</p>
+        <ul class="member-grid reveal">
+          <li><span class="member-grid__label">Business</span><strong>Cafeteria Nurys</strong><em>Nurys Antonia Moya</em></li>
+          <li><span class="member-grid__label">Business</span><strong>La Vida Smoothie</strong><em>Carmelle Desima</em></li>
+          <li><span class="member-grid__label">Resident</span><strong>Ruth Diez</strong><em>Local attorney</em></li>
+          <li><span class="member-grid__label">Resident</span><strong>Edgar Turcias</strong></li>
+          <li><span class="member-grid__label">Resident</span><strong>James Marshall-Zank</strong></li>
+        </ul>
+        <p class="note reveal">Help us identify and invite new residents — the APC meets its obligations through membership, not fee hikes.</p>
+      </div>
+    </section>
+
+    <!-- 3: Perimeter Wall -->
+    <section class="slide" id="slide-3" data-title="Perimeter Wall">
+      <div class="slide__inner">
+        <p class="eyebrow reveal">APC Secretary’s Corner</p>
+        <h2 class="reveal">Our perimeter wall needs the community again</h2>
+        <div class="feature-row">
+          <div class="feature-row__copy">
+            <p class="reveal">Built around 2001 with support from the Valerino Group and APC fundraising — including Lianna Swerdlin’s legendary weekend appeals outside Jenny’s Market — the wall made Costambar far safer. More than 20 years later, age and collapses demand permanent repairs.</p>
+            <ul class="checklist reveal">
+              <li>Temporary fencing installed on the Javillar side (Sep 2026)</li>
+              <li>Security Committee has spent more than <strong>RD$500,000</strong> on wall &amp; security improvements</li>
+              <li>Western dirt-trail access near Calle Colón still needs closing</li>
+              <li>Permanent Javillar repairs estimated at several thousand dollars</li>
+            </ul>
+            <div class="cta-box reveal">
+              <p><strong>Donate for security</strong> — APC office (Mon–Fri 9–3, Sat 9–12), note “for security”; Jack Cameron at <a href="mailto:jackflor@aol.com">jackflor@aol.com</a>; or <a href="https://www.costambar.org/" target="_blank" rel="noopener">costambar.org</a></p>
+            </div>
+          </div>
+          <div class="mosaic reveal">
+            <img src="images/wall-1.jpg" alt="Collapsed wall sections on the Javillar side" />
+            <img src="images/wall-3.jpg" alt="Concertina wire and glass installed atop Cafemba wall" />
+            <img src="images/temp-fence.jpg" alt="Temporary perimeter wall repairs, September 2026" />
+            <img src="images/access-road.jpg" alt="Unsecured western access road" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4: Beautification -->
+    <section class="slide slide--tint" id="slide-4" data-title="Beautification">
+      <div class="slide__inner">
+        <p class="eyebrow reveal">Beautification Committee</p>
+        <h2 class="reveal">Volunteers keep Costambar beautiful</h2>
+        <p class="lede reveal">Nearly <strong>40 bags of trash</strong> collected this month. Local government provides zero street-cleaning help — our volunteers do it all.</p>
+        <div class="trio reveal">
+          <figure>
+            <img src="images/volunteers-aug.jpg" alt="August cleanup volunteers under an umbrella" />
+            <figcaption>August volunteers — rain or shine</figcaption>
+          </figure>
+          <figure>
+            <img src="images/volunteers-sep.jpg" alt="September cleanup volunteers with trash bags and pickers" />
+            <figcaption>September cleanup crew</figcaption>
+          </figure>
+          <figure>
+            <img src="images/welcome-sign.jpg" alt="Welcome to Costambar advertising pylon after cleanup" />
+            <figcaption>Calle Colón &amp; Calle Central pylon</figcaption>
+          </figure>
+        </div>
+        <div class="event-banner reveal">
+          <div>
+            <p class="eyebrow">Next clean-up</p>
+            <h3>Saturday, October 17 · 8:00 a.m.</h3>
+            <p>Meet at the APC office. Bags, gloves &amp; water provided. Recycling bin for plastics coming on a trial basis — stay tuned.</p>
+          </div>
+          <img src="images/beautify-icon.jpg" alt="" class="event-banner__icon" />
+        </div>
+      </div>
+    </section>
+
+    <!-- 5: In and Around -->
+    <section class="slide" id="slide-5" data-title="Around Costambar">
+      <div class="slide__inner">
+        <p class="eyebrow reveal">In &amp; Around the Community</p>
+        <h2 class="reveal">Sustainable beaches workshop</h2>
+        <div class="split">
+          <div class="split__text">
+            <p class="reveal">APC joined the Beach Vendors Association, Junta de Vecinos, Clean Oceans, the Vice Mayor, Ministry of Environment, fishermen, and UASD for a Ministry-hosted workshop on managing sustainable beaches.</p>
+            <p class="reveal">A Costambar committee is now forming. Needs on our public beach include eco-friendly sanitation &amp; showers, better waste &amp; seaweed removal, consistent water, sidewalks, parking upgrades, fisheries enforcement, better policing, and weekend lifeguards.</p>
+            <p class="note reveal">Voluntary gate collections that once funded lifeguards were halted in June 2024 — APC will raise this again with local government.</p>
+          </div>
+          <div class="mosaic mosaic--2 reveal">
+            <img src="images/workshop-2.jpg" alt="Sustainable beaches workshop participants" />
+            <img src="images/workshop-3.jpg" alt="Workshop presentation materials" />
+            <img src="images/workshop-1.jpg" alt="Community partners at the workshop" />
+            <img src="images/workshop-4.jpg" alt="Officials and community representatives" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6: Reef & Turtles -->
+    <section class="slide slide--deep" id="slide-6" data-title="Reef & Turtles">
+      <div class="slide__inner">
+        <p class="eyebrow reveal">Conservation</p>
+        <h2 class="reveal">Reef nurseries thriving — and turtle hatchlings on our beach</h2>
+        <div class="feature-row">
+          <div class="mosaic mosaic--reef reveal">
+            <img src="images/reef-1.jpg" alt="Coral formations in Costambar reef restoration project" />
+            <img src="images/reef-2.jpg" alt="Fish swimming among restored reef habitat" />
+            <img src="images/turtles-1.jpg" alt="Sea turtle hatchlings crossing Costambar beach at night" />
+            <img src="images/turtles-2.jpg" alt="Sea turtle hatchlings gathered safely before release" />
+          </div>
+          <div class="feature-row__copy">
+            <p class="reveal">Led by APC member <strong>Deborah Sorenson</strong> with the Ministry of Environment and Océanos Limpios. Illegal fishing still threatens juveniles — donations will fund a beachfront watchman.</p>
+            <p class="reveal">Contact Deborah on WhatsApp: <a href="https://wa.me/18494731989">849-473-1989</a>. Follow &amp; volunteer via Facebook: <em>Costambar Coral Reef Healing</em>.</p>
+            <p class="reveal">A sizeable turtle nest hatched recently. Security and local officials helped hatchlings reach the sea — sometimes up to 90% never make it without protection.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7: Broadcast + Pepper -->
+    <section class="slide slide--tint" id="slide-7" data-title="Community Pulse">
+      <div class="slide__inner">
+        <div class="two-up">
+          <article class="card-block reveal">
+            <p class="eyebrow">On air</p>
+            <h2>La Voz Libre from El Carey</h2>
+            <img src="images/broadcast-panel.jpg" alt="Community leaders on La Voz Libre broadcast at El Carey" class="card-block__img" />
+            <p>APC, Beach Vendors, Junta de Vecinos, and the reef project spoke to the public and officials. Thanks to the hosts and Ramón Martínez of El Carey.</p>
+            <a class="btn btn--ghost" href="https://www.facebook.com/VozLibreRadio104.9Fm/videos/1662405362070813" target="_blank" rel="noopener">Watch APC segment (2:43) →</a>
+          </article>
+          <article class="card-block card-block--accent reveal">
+            <p class="eyebrow">Critter Corner</p>
+            <h2>Meet Pepper — looking for a home</h2>
+            <div class="pepper-photos">
+              <img src="images/pepper-1.jpg" alt="Pepper the black dog standing on the beach" />
+              <img src="images/pepper-2.jpg" alt="Pepper sitting and smiling on the sand" />
+            </div>
+            <p>Neutered &amp; vaccinated male, ~3 years. Friendly with dogs and cats. Loves a daily ocean swim. Solid black with one white chest spot.</p>
+            <p><strong>Melinda Gallo</strong> · WhatsApp <a href="https://wa.me/18493538538">849-353-8538</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8: Business Network -->
+    <section class="slide" id="slide-8" data-title="Business Network">
+      <div class="slide__inner">
+        <p class="eyebrow reveal">Costambar Business Network</p>
+        <h2 class="reveal">Support the businesses that support Costambar</h2>
+        <p class="lede reveal">All APC business members are CBN members — listed on <a href="https://www.costambar.org/" target="_blank" rel="noopener">costambar.org</a> and in new-member packets.</p>
+        <div class="biz-spotlight reveal">
+          <figure>
+            <img src="images/cafeteria-nurys.jpg" alt="Cafeteria Nurys interior" />
+            <figcaption>
+              <strong>Nuris Cafeteria</strong>
+              Breakfast through dinner · Happy Hour 5–7 p.m. (closed Thu) · Delivery · WhatsApp 809-459-0307
+            </figcaption>
+          </figure>
+          <figure>
+            <img src="images/la-vida-1.jpg" alt="La Vida Smoothie shop" />
+            <figcaption>
+              <strong>La Vida Smoothie</strong>
+              Opened May 23 · Smoothies &amp; light lunch · Summer hours Mon–Fri 9–1 &amp; 4:30–9; weekends 4:30–10
+            </figcaption>
+          </figure>
+          <figure>
+            <img src="images/ad-pylon.jpg" alt="APC advertising pylon with available spaces" />
+            <figcaption>
+              <strong>Advertise on the pylon</strong>
+              Calle Colón &amp; Calle Central · Contact Bethania at the APC office for rates
+            </figcaption>
+          </figure>
+        </div>
+        <p class="biz-list reveal">Also: Black Beards Resort · Central de Taxi · Costambar Business Center · L’Oase / Sam’s Bar · Life Quiro Wellness · El Carey · Rofiasi Engineering · Jenny’s Market</p>
+      </div>
+    </section>
+
+    <!-- 9: Membership -->
+    <section class="slide slide--tint" id="slide-9" data-title="Membership">
+      <div class="slide__inner">
+        <p class="eyebrow reveal">APC Membership</p>
+        <h2 class="reveal">What your membership dollars deliver</h2>
+        <div class="benefits reveal">
+          <div class="benefit"><span>01</span><h3>24/7 Security</h3><p>Main &amp; industrial gates, Cafemba emergency access, motorized patrols every day of the year.</p></div>
+          <div class="benefit"><span>02</span><h3>Investigations</h3><p>Incident reports, video, and help filing denuncias at Fiscalía — especially for non-Spanish speakers.</p></div>
+          <div class="benefit"><span>03</span><h3>Home assessments</h3><p>Members-only vulnerability reviews and mitigation recommendations.</p></div>
+          <div class="benefit"><span>04</span><h3>Agency representation</h3><p>Edenorte, Tourism, Environment, municipality, and law enforcement advocacy.</p></div>
+          <div class="benefit"><span>05</span><h3>Beautification</h3><p>Monthly clean-ups, entrance signs &amp; flags, parking and truck-routing signs.</p></div>
+          <div class="benefit"><span>06</span><h3>Security Committee</h3><p>Uniforms, gear, motorcycles, perimeter — suggested RD$7,200/year donation.</p></div>
+        </div>
+        <div class="split split--tight reveal">
+          <img src="images/security-team.jpg" alt="APC security presence in Costambar" class="round-photo" />
+          <p class="note">~90% of APC income funds security employees. Metal “APC Costambar Security” member plaques arrive by end of September — volunteers needed to help mount them.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10: Beach Safety -->
+    <section class="slide" id="slide-10" data-title="Beach Safety">
+      <div class="slide__inner split">
+        <div class="split__media reveal">
+          <figure class="photo-stack">
+            <img src="images/beach-safety.jpg" alt="Costambar beach shoreline" />
+            <figcaption>Respect the reef channels and tides</figcaption>
+          </figure>
+        </div>
+        <div class="split__text">
+          <p class="eyebrow reveal">Please read</p>
+          <h2 class="reveal">The beach can be a dangerous place</h2>
+          <p class="reveal">Costambar experienced another drowning this past week. Historically, most incidents relate to: inability to swim, poor fitness, alcohol, or strong surges between reefs on an outgoing tide.</p>
+          <ul class="checklist reveal">
+            <li>There are currently <strong>no regular lifeguards</strong> (except some major holidays via Civil Defense)</li>
+            <li>Avoid the water on a strong outgoing tide</li>
+            <li>Never mix alcohol with swimming</li>
+            <li>Report unsafe water activity to POLITUR immediately</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11: Security Update -->
+    <section class="slide slide--tint" id="slide-11" data-title="Security Update">
+      <div class="slide__inner">
+        <p class="eyebrow reveal">Security Update</p>
+        <h2 class="reveal">Industrial Gate &amp; increased law enforcement</h2>
+        <div class="two-up">
+          <article class="card-block reveal">
+            <h3>Industrial Gate hours</h3>
+            <img src="images/industrial-gate.jpg" alt="Industrial construction gate in Costambar" class="card-block__img" />
+            <p><strong>Mon–Fri</strong> 7:00 a.m.–6:00 p.m. · <strong>Sat</strong> 7:00 a.m.–12:00 p.m. · Closed Sundays &amp; holidays.</p>
+            <p>After-hours access only for urgent need — notify the APC office in advance. Plan deliveries during normal hours; do not ask supervisors to cover poor planning.</p>
+          </article>
+          <article class="card-block reveal">
+            <h3>More police activity</h3>
+            <div class="pepper-photos">
+              <img src="images/police-arrest.jpg" alt="National Police arresting a reckless driver" />
+              <img src="images/stolen-vehicle.jpg" alt="National Police seizing a stolen vehicle on the beachfront" />
+            </div>
+            <p>Recent operations: undocumented detentions, reckless moto arrest, and a stolen vehicle found parked on the beachfront — rented to a visitor. Always verify ownership when renting cars. Locally, many unregistered motos may be stolen.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12: Events & Phones -->
+    <section class="slide" id="slide-12" data-title="Events & Contacts">
+      <div class="slide__inner">
+        <div class="calendar-grid">
+          <div class="reveal">
+            <p class="eyebrow">Community calendar</p>
+            <h2>Dates to remember</h2>
+            <ul class="timeline">
+              <li><time>Sep 19</time><span>Community clean-up</span></li>
+              <li><time>Sep 22</time><span>September Equinox</span></li>
+              <li><time>Sep 24</time><span>Feast of Our Lady of Mercy — National Holiday</span></li>
+              <li class="timeline--highlight"><time>Oct 17</time><span>Community clean-up · 8:00 a.m. at APC office</span></li>
+            </ul>
+          </div>
+          <div class="reveal">
+            <p class="eyebrow">Keep handy</p>
+            <h2>Important numbers</h2>
+            <div class="phones">
+              <a href="tel:911"><strong>911</strong><span>Emergency</span></a>
+              <a href="tel:511"><strong>511</strong><span>Highway assistance</span></a>
+              <a href="tel:8099707140"><strong>809-970-7140</strong><span>Ambulance</span></a>
+              <a href="tel:8099707877"><strong>809-970-7877</strong><span>APC Office</span></a>
+              <a href="tel:8092505510"><strong>809-250-5510</strong><span>APC Office cell</span></a>
+              <a href="tel:8099707015"><strong>809-970-7015</strong><span>Main Gate</span></a>
+              <a href="tel:8494494503"><strong>849-449-4503</strong><span>Security Supervisor</span></a>
+              <a href="tel:8295495285"><strong>829-549-5285</strong><span>General Supervisor</span></a>
+              <a href="tel:8093200365"><strong>809-320-0365</strong><span>POLITUR</span></a>
+              <a href="tel:8095862312"><strong>809-586-2312</strong><span>Fire Department</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13: Close -->
+    <section class="slide slide--close" id="slide-13" data-title="The APC Needs You">
+      <div class="close__media" aria-hidden="true">
+        <img src="images/flags.jpg" alt="" />
+        <div class="hero__wash"></div>
+      </div>
+      <div class="slide__inner close__content">
+        <img src="images/logo.jpg" alt="" class="hero__logo reveal" />
+        <h2 class="reveal">The APC Needs YOU!</h2>
+        <p class="reveal">Questions, story ideas, or bulletin input: <a href="mailto:apcpresident2026@gmail.com">apcpresident2026@gmail.com</a></p>
+        <p class="reveal">APC Office · Calle Central No. 5 · Mon–Fri 9:00–3:00 · Sat 9:00–1:00<br />
+          <a href="tel:8099707877">809-970-7877</a> · <a href="mailto:apcmaintenance@yahoo.com">apcmaintenance@yahoo.com</a></p>
+        <p class="reveal"><a class="btn" href="https://www.costambar.org/" target="_blank" rel="noopener">Visit costambar.org</a></p>
+        <p class="close__fine reveal">Costambar Homeowners Association · Monthly Community Bulletin · September 2026</p>
+      </div>
+    </section>
+  </main>
+
+  <p class="hint" id="hint">Scroll, swipe, or use ↑ ↓ keys</p>
+  <script src="app.js"></script>
+</body>
+</html>
