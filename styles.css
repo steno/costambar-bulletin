@@ -6,7 +6,8 @@
   --paper: #f6f3ee;
   --red: #c8102e;
   --accent: #c8102e;
-  --muted: rgba(11, 21, 32, 0.62);
+  --muted: rgba(11, 21, 32, 0.72);
+  --note: rgba(11, 21, 32, 0.9);
   --rule: rgba(11, 21, 32, 0.18);
   --gutter: clamp(1rem, 2.5vw, 2.5rem);
   --page: min(1220px, calc(100% - 2 * var(--gutter)));
@@ -31,7 +32,8 @@ body {
   font-family: var(--font);
   color: var(--black);
   background: var(--paper);
-  line-height: 1.45;
+  font-size: 1.0625rem;
+  line-height: 1.55;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   letter-spacing: -0.01em;
@@ -364,7 +366,7 @@ em { font-style: normal; font-weight: 500; }
 .slide .note {
   background: transparent;
   border-color: var(--rule);
-  color: var(--muted);
+  color: var(--note);
 }
 
 .slide__inner {
@@ -409,9 +411,10 @@ em { font-style: normal; font-weight: 500; }
 }
 
 .lede {
-  font-size: 1.05rem;
+  font-size: 1.2rem;
+  line-height: 1.55;
   color: var(--black);
-  max-width: 36rem;
+  max-width: 38rem;
   margin-bottom: 1.75rem;
 }
 
@@ -478,9 +481,10 @@ em { font-style: normal; font-weight: 500; }
 }
 
 .hero__lede {
-  font-size: 0.95rem;
-  color: var(--muted);
-  max-width: 28rem;
+  font-size: 1.15rem;
+  line-height: 1.55;
+  color: var(--note);
+  max-width: 30rem;
 }
 
 .slide--hero .plus::before,
@@ -649,11 +653,11 @@ em { font-style: normal; font-weight: 500; }
 .trio figcaption,
 .biz-spotlight figcaption {
   margin-top: 0.5rem;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--note);
 }
 
 .round-photo {
@@ -699,16 +703,17 @@ em { font-style: normal; font-weight: 500; }
   color: var(--red);
 }
 
-.member-grid strong { font-size: 1rem; font-weight: 500; color: var(--black); }
-.member-grid em { font-style: normal; color: var(--muted); font-size: 0.85rem; font-weight: 400; }
+.member-grid strong { font-size: 1.1rem; font-weight: 500; color: var(--black); }
+.member-grid em { font-style: normal; color: var(--note); font-size: 0.95rem; font-weight: 400; }
 
 .note {
   background: transparent;
   border: 1px solid var(--rule);
   border-radius: 0;
-  padding: 1rem 1.15rem;
-  font-size: 0.9rem;
-  color: var(--muted);
+  padding: 1.1rem 1.25rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: var(--note);
   max-width: none;
 }
 
@@ -879,7 +884,7 @@ em { font-style: normal; font-weight: 500; }
 .trio figcaption {
   padding: 0.65rem 0 0;
   background: transparent;
-  color: var(--muted);
+  color: var(--note);
 }
 
 .event-banner {
@@ -1049,21 +1054,23 @@ em { font-style: normal; font-weight: 500; }
   padding: 0.75rem 0 0;
   text-transform: none;
   letter-spacing: 0;
-  font-size: 0.8rem;
-  line-height: 1.4;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--note);
 }
 
 .biz-spotlight figcaption strong {
   display: block;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 0.35rem;
+  color: var(--black);
 }
 
 .biz-list {
-  font-size: 0.85rem;
-  color: var(--muted);
+  font-size: 1rem;
+  color: var(--note);
   border-top: 1px solid var(--rule);
   padding-top: 1rem;
   max-width: none;
@@ -1097,8 +1104,8 @@ em { font-style: normal; font-weight: 500; }
   letter-spacing: -0.02em;
 }
 
-.benefit h3 { margin: 0.25rem 0 0.3rem; font-size: 0.95rem; }
-.benefit p { margin: 0; font-size: 0.78rem; color: var(--muted); max-width: none; line-height: 1.35; }
+.benefit h3 { margin: 0.25rem 0 0.3rem; font-size: 1.05rem; }
+.benefit p { margin: 0; font-size: 0.95rem; color: var(--note); max-width: none; line-height: 1.45; }
 
 /* ——— Calendar & phones ——— */
 .calendar-grid {
@@ -1374,11 +1381,11 @@ em { font-style: normal; font-weight: 500; }
     padding: 0.55rem 0.75rem;
     gap: 0.15rem;
   }
-  .member-grid__label { font-size: 0.58rem; }
-  .member-grid strong { font-size: 0.92rem; }
-  .member-grid em { font-size: 0.78rem; }
-  #slide-2 .lede { margin-bottom: 0.65rem; font-size: 0.92rem; }
-  #slide-2 .note { padding: 0.65rem 0.85rem; font-size: 0.82rem; }
+  .member-grid__label { font-size: 0.62rem; }
+  .member-grid strong { font-size: 1.05rem; }
+  .member-grid em { font-size: 0.9rem; }
+  #slide-2 .lede { margin-bottom: 0.65rem; font-size: 1.1rem; }
+  #slide-2 .note { padding: 0.85rem 1rem; font-size: 1.05rem; }
   .lang { margin-right: 0.4rem; height: var(--ctrl-h); }
   .lang__btn {
     min-width: 2rem;
@@ -1508,7 +1515,11 @@ em { font-style: normal; font-weight: 500; }
   .lede,
   .note {
     max-width: none;
-    font-size: 10pt;
+    font-size: 11.5pt;
+  }
+
+  .note {
+    color: var(--note);
   }
 
   .eyebrow {
