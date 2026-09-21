@@ -239,6 +239,12 @@
     return slide.scrollTop <= 3;
   };
 
+  const advance = (dir) => {
+    if (!atSlideEdge(dir)) return false;
+    goTo(current + dir);
+    return true;
+  };
+
   window.addEventListener("keydown", (e) => {
     if (["INPUT", "TEXTAREA"].includes(document.activeElement?.tagName)) return;
     if (e.key === "ArrowDown" || e.key === "PageDown" || e.key === " " || e.key === "ArrowRight") {
@@ -271,10 +277,7 @@
     (e) => {
       if (touchY == null) return;
       const dy = touchY - e.changedTouches[0].screenY;
-      if (Math.abs(dy) > 60) {
-        const dir = dy > 0 ? 1 : -1;
-        if (atSlideEdge(dir)) goTo(current + dir);
-      }
+      if (Math.abs(dy) > 60) advance(dy > 0 ? 1 : -1);
       touchY = null;
     },
     { passive: true }
@@ -295,11 +298,28 @@
   window.addEventListener(
     "wheel",
     (e) => {
-      if (wheelLock) {
-        e.preventDefault();
-        return;
+      if (Math.abs(e.deltaY) < 12) return;
+      const slide = slides[current];
+      if (!slide) return;
+      const dir = e.deltaY > 0 ? 1 : -1;
+      const max = slide.scrollHeight - slide.clientHeight;
+
+      if (max > 2) {
+        const atEnd = dir > 0 ? slide.scrollTop >= max - 3 : slide.scrollTop <= 3;
+        if (!atEnd) {
+          e.preventDefault();
+          slide.scrollTop += e.deltaY;
+          return;
+        }
       }
-      if (Math.abs(e.deltaY) < 40) return;
+
+      e.preventDefault();
+      if (wheelLock) return;
+      wheelLock = true;
+      goTo(current + dir);
+      setTimeout(() => {
+        wheelLock = false;
+      }, 550);
     },
     { passive: false }
   );

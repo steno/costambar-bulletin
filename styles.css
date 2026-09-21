@@ -337,7 +337,7 @@ em { font-style: normal; font-weight: 500; }
 }
 
 /* ——— Slides ——— */
-.deck { height: 100vh; height: 100dvh; }
+.deck { min-height: 100vh; min-height: 100dvh; }
 
 .slide {
   --slide-accent: var(--red);
@@ -355,7 +355,6 @@ em { font-style: normal; font-weight: 500; }
   padding: calc(var(--chrome-h) + 1.75rem) var(--gutter) 3rem;
   overflow-x: hidden;
   overflow-y: auto;
-  overscroll-behavior-y: contain;
   background: var(--paper);
   color: var(--black);
   border-bottom: 1px solid var(--rule);
