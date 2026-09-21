@@ -1337,20 +1337,30 @@ em { font-style: normal; font-weight: 500; }
 .hint.is-hidden { opacity: 0; }
 
 @media (max-width: 600px) {
-  :root { --chrome-h: 4.25rem; }
+  :root { --chrome-h: 5rem; }
   .slide { padding-top: calc(var(--chrome-h) + 1.25rem); padding-bottom: 2.5rem; }
   .mosaic { min-height: 14rem; aspect-ratio: 1; }
   .phones { grid-template-columns: 1fr; }
   .chrome {
     grid-template-columns: auto 1fr auto;
+    align-items: center;
   }
   .chrome__seal {
     display: block;
-    width: 52px;
-    height: 52px;
+    width: 64px;
+    height: 64px;
   }
   .chrome__wordmark { display: none; }
-  .chrome__meta { font-size: 0.65rem; }
+  .chrome__meta {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1rem;
+    white-space: normal;
+    font-size: 0.62rem;
+    line-height: 1.15;
+    text-align: center;
+  }
+  .chrome__sep { display: none; }
   .chrome__nav { --ctrl-h: 2.25rem; }
   .lang { margin-right: 0.4rem; height: var(--ctrl-h); }
   .lang__btn {
