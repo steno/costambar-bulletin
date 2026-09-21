@@ -222,6 +222,10 @@
   prevBtn.addEventListener("click", () => goTo(current - 1));
   nextBtn.addEventListener("click", () => goTo(current + 1));
   startBtn?.addEventListener("click", () => goTo(1));
+  document.querySelector(".chrome__brand")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    goTo(0);
+  });
   dots.forEach((dot) => {
     dot.addEventListener("click", () => goTo(Number(dot.dataset.slide)));
   });
