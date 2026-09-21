@@ -11,6 +11,9 @@ window.APC_I18N = {
       month: "Sep 2026",
       hint: "Scroll, swipe, or use ↑ ↓ keys",
       langSwitch: "Language",
+      pdf: "PDF",
+      pdfAria: "Download PDF",
+      pdfFilename: "Costambar-Bulletin-September-2026",
     },
     dots: [
       "Title",
@@ -199,6 +202,9 @@ window.APC_I18N = {
       month: "Sep 2026",
       hint: "Desplázate, desliza o usa las teclas ↑ ↓",
       langSwitch: "Idioma",
+      pdf: "PDF",
+      pdfAria: "Descargar PDF",
+      pdfFilename: "Boletin-Costambar-Septiembre-2026",
     },
     dots: [
       "Portada",
